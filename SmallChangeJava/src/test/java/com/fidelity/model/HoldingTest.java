@@ -1,0 +1,68 @@
+package com.fidelity.model;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.math.BigDecimal;
+import java.util.UUID;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class HoldingTest {
+	
+ 	private Holding holding;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		String instrumentId = UUID.randomUUID().toString();
+		String instrumentDescription = "Sample Instrument";
+		String externalId = UUID.randomUUID().toString();
+		String externalIdType = "Sample external ID type";
+		int minQuantity = 5;
+		int maxQuantity = 10;
+		String categoryId = UUID.randomUUID().toString();
+		Instrument instrument = new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
+				maxQuantity, categoryId);
+		String direction="buy";
+		BigDecimal noOfShares= new BigDecimal(10);
+		holding =new Holding(instrument,direction,noOfShares);
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		holding=null;
+	}
+
+	@Test
+	void test() {
+		assertNotNull(holding);
+	}
+	
+	@Test
+	void testGetPrice() {
+		assertEquals(holding.getPrice(), new BigDecimal(50).setScale(2));
+	}
+	
+	@Test
+	void testGetGain() {
+		assertEquals(holding.getGain(), new BigDecimal(0).setScale(2));
+	}
+	
+	@Test
+	void testGetShare() {
+		assertEquals(holding.getNoOfShares(), new BigDecimal(10));
+	}
+	
+	@Test
+	void testGetDirection() {
+		assertEquals(holding.getDirection(), "buy");
+	}
+	
+	@Test
+	void testEquals() {
+		Holding holding1 = holding;
+		assertEquals(holding, holding1);
+	}
+
+}
