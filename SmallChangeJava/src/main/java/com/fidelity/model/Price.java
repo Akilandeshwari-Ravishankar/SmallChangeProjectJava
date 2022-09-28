@@ -1,15 +1,27 @@
 package com.fidelity.model;
 
+
+
+
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+
+
+
+
 public class Price {
     
-	private BigDecimal bidPrice;
+    private BigDecimal bidPrice;
     private BigDecimal askPrice;
     private LocalDate timeStamp;
-    private Instrument instrument;
+    private String instrumentId;
+
+
+
+
 
 
   public Price() {
@@ -19,51 +31,83 @@ public class Price {
 
 
 
-  public Price(BigDecimal bidPrice, BigDecimal askPrice, LocalDate timeStamp, Instrument instrument) {
+
+
+
+
+public Price(BigDecimal bidPrice, BigDecimal askPrice, LocalDate timeStamp, String instrumentId) {
         super();
         this.bidPrice = bidPrice;
         this.askPrice = askPrice;
         this.timeStamp = timeStamp;
-        this.instrument = instrument;
+        this.instrumentId = instrumentId;
     }
 
-  public BigDecimal getBidPrice() {
+
+
+
+
+public BigDecimal getBidPrice() {
         return bidPrice;
     }
 
-  public BigDecimal getAskPrice() {
+
+
+
+
+public BigDecimal getAskPrice() {
         return askPrice;
     }
 
-  public LocalDate getTimeStamp() {
+
+
+
+
+public LocalDate getTimeStamp() {
         return timeStamp;
     }
 
-  public Instrument getInstrument() {
-        return instrument;
+
+
+
+
+public String getInstrumentId() {
+        return instrumentId;
     }
 
-  @Override
-    public int hashCode() {
-        return Objects.hash(askPrice, bidPrice, instrument, timeStamp);
-    }
 
-  @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Price other = (Price) obj;
-        return Objects.equals(askPrice, other.askPrice) && Objects.equals(bidPrice, other.bidPrice)
-                && Objects.equals(instrument, other.instrument) && Objects.equals(timeStamp, other.timeStamp);
-    }
 
-  @Override
-    public String toString() {
-        return "Price [bidPrice=" + bidPrice + ", askPrice=" + askPrice + ", timeStamp=" + timeStamp + ", instrument="
-                + instrument + "]";
-  }
+
+
+@Override
+public int hashCode() {
+    return Objects.hash(askPrice, bidPrice, instrumentId, timeStamp);
+}
+
+
+
+
+
+@Override
+public boolean equals(Object obj) {
+    if (this == obj)
+        return true;
+    if (obj == null)
+        return false;
+    if (getClass() != obj.getClass())
+        return false;
+    Price other = (Price) obj;
+    return Objects.equals(askPrice, other.askPrice) && Objects.equals(bidPrice, other.bidPrice)
+            && Objects.equals(instrumentId, other.instrumentId) && Objects.equals(timeStamp, other.timeStamp);
+}
+
+
+
+
+
+@Override
+public String toString() {
+    return "Price [bidPrice=" + bidPrice + ", askPrice=" + askPrice + ", timeStamp=" + timeStamp + ", instrumentId="
+            + instrumentId + "]";
+}
 }
