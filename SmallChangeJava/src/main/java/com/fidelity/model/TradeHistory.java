@@ -10,21 +10,21 @@ public class TradeHistory {
 	private String direction ;
 	private String clientId;
 	private String tradeId;
-	private LocalDate cashValue ;
+	private BigDecimal cashValue ;
 	
 	
 	
 	public TradeHistory(String instrumentId, BigDecimal quantity, BigDecimal executionPrice, String direction,
-			String clientId, String tradeId, LocalDate cashValue) {
-		if(instrumentId == null || clientId == null || tradeId == null)
-			throw new IllegalArgumentException("instument id,client id , trade id cannot be null");
-		this.instrumentId = instrumentId;
-		this.quantity = quantity;
-		this.executionPrice = executionPrice;
-		this.direction = direction;
-		this.clientId = clientId;
-		this.tradeId = tradeId;
-		this.cashValue = cashValue;
+			String clientId, String tradeId, BigDecimal cashValue) {
+		if(instrumentId == null || clientId == null || tradeId == null || instrumentId.isEmpty() || clientId.isEmpty() || tradeId.isEmpty())
+			throw new IllegalArgumentException("instument id,client id , trade id cannot be null or empty");
+		setInstrumentId(instrumentId);
+		setQuantity(quantity);
+		setExecutionPrice(executionPrice);
+		setDirection(direction);
+		setClientId(clientId);
+		setTradeId(tradeId);
+		setCashValue(cashValue);
 	}
 	
 	
@@ -32,7 +32,7 @@ public class TradeHistory {
 		return instrumentId;
 	}
 	public void setInstrumentId(String instrumentId) {
-		if(instrumentId == null)
+		if(instrumentId == null || instrumentId.isEmpty())
 			throw new IllegalArgumentException("instrument id cannot be null");
 		this.instrumentId = instrumentId;
 	}
@@ -55,21 +55,26 @@ public class TradeHistory {
 		this.direction = direction;
 	}
 	public String getClientId() {
+		
 		return clientId;
 	}
 	public void setClientId(String clientId) {
+		if(clientId == null)
+			throw new IllegalArgumentException("client id cannot be null");
 		this.clientId = clientId;
 	}
 	public String getTradeId() {
 		return tradeId;
 	}
 	public void setTradeId(String tradeId) {
+		if(tradeId == null)
+			throw new IllegalArgumentException("trade id cannot be null");
 		this.tradeId = tradeId;
 	}
-	public LocalDate getCashValue() {
+	public BigDecimal getCashValue() {
 		return cashValue;
 	}
-	public void setCashValue(LocalDate cashValue) {
+	public void setCashValue(BigDecimal cashValue) {
 		this.cashValue = cashValue;
 	}
 	@Override
