@@ -12,7 +12,7 @@ public class ClientIdentification {
 		if(type==null) {
 			throw new NullPointerException("Type cannot be null");
 		}
-		if(type!="SSN" && type!="Passport" ) {
+		if(!type.equals("SSN") && !type.equals("Passport")) {
 			throw new IllegalArgumentException("Type should either be SSN or Passport");
 		}
 		if(value==null) {
