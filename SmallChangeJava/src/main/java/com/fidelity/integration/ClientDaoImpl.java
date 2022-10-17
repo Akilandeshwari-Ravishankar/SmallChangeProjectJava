@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import com.fidelity.model.Client;
 import com.fidelity.model.ClientIdentification;
 
+
 public class ClientDaoImpl implements ClientDao {
 	
 	protected DataSource dataSource;
