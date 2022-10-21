@@ -17,7 +17,7 @@ public class Instrument {
 
 	public Instrument(String instrumentId, String instrumentDescription, 
 			String externalId, String externalIdType, int minQuantity, 
-			int maxQuantity, String categoryId) {
+			int maxQuantity, String categoryId, Price price) {
 		setInstrumentId(instrumentId);
 		setInstrumentDescription(instrumentDescription);
 		setExternalId(externalId);
@@ -25,6 +25,7 @@ public class Instrument {
 		setMinQuantity(minQuantity);
 		setMaxQuantity(maxQuantity);
 		setCategoryId(categoryId);
+		setPrice(price);
 	}
 
 	public void setInstrumentId(String instrumentId) {
@@ -105,17 +106,11 @@ public class Instrument {
 	}
 
 	public Price getPrice() {
-//		for(price: x) {
-//			if(this.instrumentId == price.instrumentId) {
-//				return price; 
-//			}
-//		}
-//		throw new IllegalArgumentException("Price for the given instrument doesn't exist");
-		
-		//Placeholder to avoid errors
-		//Actual logic to be implemented later
-		price = new Price(new BigDecimal("50.00"),new BigDecimal("51.00"),LocalDate.of(2022, 9, 28),"abcd");
 		return price;
+	}
+
+	public void setPrice(Price price) {
+		this.price = price;
 	}
 
 	@Override
