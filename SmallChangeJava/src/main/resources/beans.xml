@@ -27,15 +27,9 @@
 		<property name="password" value="${db.password}" />
 	</bean>
 
-	<!-- Define a DataSource for an in-memory database -->
-	<jdbc:embedded-database id="hsqldbDataSource">
-		<jdbc:script location="classpath:departments-hsqldb-schema.sql" />
-		<jdbc:script location="classpath:departments-hsqldb-dataload.sql" />
-	</jdbc:embedded-database>
-
 	<!-- Define an alias for the desired DataSource bean 
 		 Set the name to the DataSource you want to use -->
-	<alias name="hsqldbDataSource" alias="datasource" />
+	
 
 	<!-- Define a transaction manager
 		 Use DataSourceTransactionManager for transactions on a single database -->
