@@ -19,17 +19,13 @@
 	</bean>
 	
 	<!-- Define a DataSource for the Oracle database -->
-	<bean id="oracleDataSource"
+	<bean id="datasource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="url" value="${db.url}" />
 		<property name="driverClassName" value="${db.driver}" />
 		<property name="username" value="${db.username}" />
 		<property name="password" value="${db.password}" />
 	</bean>
-
-	<!-- Define an alias for the desired DataSource bean 
-		 Set the name to the DataSource you want to use -->
-	
 
 	<!-- Define a transaction manager
 		 Use DataSourceTransactionManager for transactions on a single database -->
@@ -49,7 +45,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="datasource" />
 		<property name="typeAliasesPackage" value="com.fidelity.business" />
-		<property name="mapperLocations" value="classpath*:com/fidelity/**/*.xml" />
+		<property name="mapperLocations" value="classpath*:com/fidelity/integration/*.xml" />
 	</bean>
 
 	<!-- Scan for mappers and let them be autowired -->
