@@ -20,6 +20,7 @@ class InstrumentTest {
 	private int maxQuantity;
 	private String categoryId;
 	private Instrument instrument;
+	private Price price;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -30,8 +31,9 @@ class InstrumentTest {
 		minQuantity = 5;
 		maxQuantity = 10;
 		categoryId = UUID.randomUUID().toString();
+		price = new Price(new BigDecimal("50.00"),new BigDecimal("51.00"),LocalDate.of(2022, 9, 28),"abcd");
 		instrument = new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
-				maxQuantity, categoryId);
+				maxQuantity, categoryId,price);
 	}
 
 	@AfterEach
@@ -49,7 +51,7 @@ class InstrumentTest {
 		instrumentId = "";
 		assertThrows(IllegalArgumentException.class, () -> {
 			new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity, maxQuantity,
-					categoryId);
+					categoryId,price);
 		});
 	}
 
@@ -58,7 +60,7 @@ class InstrumentTest {
 		instrumentDescription = "";
 		assertThrows(IllegalArgumentException.class, () -> {
 			new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity, maxQuantity,
-					categoryId);
+					categoryId,price);
 		});
 	}
 
@@ -67,7 +69,7 @@ class InstrumentTest {
 		externalId = "";
 		assertThrows(IllegalArgumentException.class, () -> {
 			new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity, maxQuantity,
-					categoryId);
+					categoryId,price);
 		});
 	}
 
@@ -76,7 +78,7 @@ class InstrumentTest {
 		externalIdType = "";
 		assertThrows(IllegalArgumentException.class, () -> {
 			new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity, maxQuantity,
-					categoryId);
+					categoryId,price);
 		});
 	}
 
@@ -85,7 +87,7 @@ class InstrumentTest {
 		minQuantity = -1;
 		assertThrows(IllegalArgumentException.class, () -> {
 			new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity, maxQuantity,
-					categoryId);
+					categoryId,price);
 		});
 	}
 
@@ -94,7 +96,7 @@ class InstrumentTest {
 		maxQuantity = -1;
 		assertThrows(IllegalArgumentException.class, () -> {
 			new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity, maxQuantity,
-					categoryId);
+					categoryId,price);
 		});
 	}
 
@@ -103,7 +105,7 @@ class InstrumentTest {
 		categoryId = "";
 		assertThrows(IllegalArgumentException.class, () -> {
 			new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity, maxQuantity,
-					categoryId);
+					categoryId,price);
 		});
 	}
 	
@@ -150,19 +152,19 @@ class InstrumentTest {
 	@Test
     void instrumentEquality() {
     	assertEquals(new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
-				maxQuantity, categoryId), instrument);
+				maxQuantity, categoryId,price), instrument);
     }
 
 	@Test
     void instrumentInequality() {
     	assertNotEquals(new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
-				7, categoryId), instrument);
+				7, categoryId,price), instrument);
     }
 	
 	@Test
 	void testHashCode() {
 		Instrument instrument2 = new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
-				maxQuantity, categoryId);
+				maxQuantity, categoryId,price);
 		assertEquals(instrument.hashCode(), instrument2.hashCode());
 	}
 }

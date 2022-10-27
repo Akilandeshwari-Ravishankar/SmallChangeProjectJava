@@ -29,7 +29,6 @@ class PriceTest {
 
   @BeforeEach
     void setUp() throws Exception {
-        instrument = new Instrument("AMZ", "Amazon", "ISUI", "AS1232", 3, 56, "STOCK");
         price = new Price(new BigDecimal("23456.00"), new BigDecimal("23457.00"), LocalDate.now(), "abcd");
     }
 

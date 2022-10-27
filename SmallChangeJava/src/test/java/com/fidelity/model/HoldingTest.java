@@ -3,6 +3,7 @@ package com.fidelity.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import org.junit.jupiter.api.AfterEach;
@@ -22,8 +23,9 @@ class HoldingTest {
 		int minQuantity = 5;
 		int maxQuantity = 10;
 		String categoryId = UUID.randomUUID().toString();
+		Price price = new Price(new BigDecimal("50.00"),new BigDecimal("51.00"),LocalDate.of(2022, 9, 28),"abcd");
 		Instrument instrument = new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
-				maxQuantity, categoryId);
+				maxQuantity, categoryId,price);
 		String direction="buy";
 		BigDecimal noOfShares= new BigDecimal(10);
 		holding =new Holding(instrument,direction,noOfShares);

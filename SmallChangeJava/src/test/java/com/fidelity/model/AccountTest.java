@@ -3,6 +3,7 @@ package com.fidelity.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,12 +15,14 @@ import org.junit.jupiter.api.Test;
 class AccountTest {
 	
 	Account account;
+	Price price;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		String accountNumber = "123";
 		int max=3;
 		account=new Account(accountNumber,max);
+		price = new Price(new BigDecimal("50.00"),new BigDecimal("51.00"),LocalDate.of(2022, 9, 28),"abcd");
 	}
 
 	@AfterEach
@@ -48,7 +51,7 @@ class AccountTest {
 		int maxQuantity = 10;
 		String categoryId = UUID.randomUUID().toString();
 		Instrument instrument = new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
-				maxQuantity, categoryId);
+				maxQuantity, categoryId,price);
 		String direction="buy";
 		BigDecimal noOfShares= new BigDecimal(10);
 		Holding holding =new Holding(instrument,direction,noOfShares);
@@ -66,7 +69,7 @@ class AccountTest {
 		int maxQuantity = 10;
 		String categoryId = UUID.randomUUID().toString();
 		Instrument instrument = new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
-				maxQuantity, categoryId);
+				maxQuantity, categoryId,price);
 		String direction="buy";
 		BigDecimal noOfShares= new BigDecimal(10);
 		Holding holding =new Holding(instrument,direction,noOfShares);
@@ -98,7 +101,7 @@ class AccountTest {
 		int maxQuantity = 10;
 		String categoryId = UUID.randomUUID().toString();
 		Instrument instrument = new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
-				maxQuantity, categoryId);
+				maxQuantity, categoryId,price);
 		String direction="buy";
 		BigDecimal noOfShares= new BigDecimal(10);
 		Holding holding =new Holding(instrument,direction,noOfShares);
@@ -127,7 +130,7 @@ class AccountTest {
 		int maxQuantity = 10;
 		String categoryId = UUID.randomUUID().toString();
 		Instrument instrument = new Instrument(instrumentId, instrumentDescription, externalId, externalIdType, minQuantity,
-				maxQuantity, categoryId);
+				maxQuantity, categoryId,price);
 		String direction="buy";
 		BigDecimal noOfShares= new BigDecimal(10);
 		Holding holding =new Holding(instrument,direction,noOfShares);
