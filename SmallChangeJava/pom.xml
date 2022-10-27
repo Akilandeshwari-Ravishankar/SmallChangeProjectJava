@@ -81,18 +81,12 @@
 		</dependency>
  -->
 		<!-- Use Spring JdbcTemplate for database integration tests -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring-jdbc.version}</version>
 			<scope>test</scope>
-		</dependency> -->
-		
-		<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-jdbc</artifactId>
-    <version>5.0.8.RELEASE</version>
-</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
