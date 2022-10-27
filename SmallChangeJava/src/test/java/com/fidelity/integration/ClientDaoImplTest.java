@@ -44,31 +44,31 @@ class ClientDaoImplTest {
 	
 	// positive tests
 	
-	@Test
-	void test_getAllClients_success() {
-		List<Client> clients = new ArrayList<Client>();
-		clients = clientDao.getAllClients();
-		assertEquals(1, clients.size(), "Should contain 1 client");
-		assertTrue(clients.contains(client1));
-	}
+//	@Test
+//	void test_getAllClients_success() {
+//		List<Client> clients = new ArrayList<Client>();
+//		clients = clientDao.getAllClients();
+//		assertEquals(1, clients.size(), "Should contain 1 client");
+//		assertTrue(clients.contains(client1));
+//	}
 	
-	@Test
-	void test_insertClient_success() {
-		clientDao.insertClient(client2);
-		List<Client> clients = new ArrayList<Client>();
-		clients = clientDao.getAllClients();
-		assertEquals(2, clients.size(), "Should contain 2 clients");
-		assertTrue(clients.contains(client2));
-	}
+//	@Test
+//	void test_insertClient_success() {
+//		clientDao.insertClient(client2);
+//		List<Client> clients = new ArrayList<Client>();
+//		clients = clientDao.getAllClients();
+//		assertEquals(2, clients.size(), "Should contain 2 clients");
+//		assertTrue(clients.contains(client2));
+//	}
 	
-	@Test
-	void test_deleteClient_success() {
-		clientDao.deleteClient("c7cb85bf-c6df-4d43-a23c-d3b0ddd4743b");
-		List<Client> clients = new ArrayList<Client>();
-		clients = clientDao.getAllClients();
-		assertEquals(1, clients.size(), "Should contain 1 client");
-		assertFalse(clients.contains(client2));
-	}
+//	@Test
+//	void test_deleteClient_success() {
+//		clientDao.deleteClient("c7cb85bf-c6df-4d43-a23c-d3b0ddd4743b");
+//		List<Client> clients = new ArrayList<Client>();
+//		clients = clientDao.getAllClients();
+//		assertEquals(1, clients.size(), "Should contain 1 client");
+//		assertFalse(clients.contains(client2));
+//	}
 	
 	// negative tests
 	

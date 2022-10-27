@@ -15,7 +15,7 @@ class TradeHistoryTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		tradeHistory = new TradeHistory("123ab", BigDecimal.TEN, BigDecimal.ONE, "buy", "1234", "td123", BigDecimal.TEN);
+		tradeHistory = new TradeHistory("123ab", BigDecimal.TEN, BigDecimal.ONE, "buy", "1234", "td123", BigDecimal.TEN,LocalDate.now());
 	}
 	@AfterEach
 	void tearDown() throws Exception {
@@ -32,26 +32,26 @@ class TradeHistoryTest {
 	@Test
 	void testObjectCreation_passing_null_throws_Exception() {
 		assertThrows(IllegalArgumentException.class,()-> {
-			new TradeHistory(null, BigDecimal.TEN, BigDecimal.ONE, "1234", "1234", "td123",  BigDecimal.TEN);
+			new TradeHistory(null, BigDecimal.TEN, BigDecimal.ONE, "1234", "1234", "td123",  BigDecimal.TEN,LocalDate.now());
 		});
 		}
 	
 	
 	@Test
 	void testObjectEquality() {
-		TradeHistory tradeHistory1 = new TradeHistory("123ab", BigDecimal.TEN, BigDecimal.ONE, "buy", "1234", "td123",  BigDecimal.TEN);
+		TradeHistory tradeHistory1 = new TradeHistory("123ab", BigDecimal.TEN, BigDecimal.ONE, "buy", "1234", "td123",  BigDecimal.TEN,LocalDate.now());
 		assertEquals(tradeHistory, tradeHistory1);
 		
 	}
 	@Test
 	void testObjectInquality() {
-		TradeHistory tradeHistory1 = new TradeHistory("13ab", BigDecimal.TEN, BigDecimal.ONE, "buy", "1234", "td123",  BigDecimal.TEN);
+		TradeHistory tradeHistory1 = new TradeHistory("13ab", BigDecimal.TEN, BigDecimal.ONE, "buy", "1234", "td123",  BigDecimal.TEN,LocalDate.now());
 		assertNotEquals(tradeHistory, tradeHistory1);
 	}
 	
 	@Test
 	void testHashCode() {
-		TradeHistory tradeHistory1 = new TradeHistory("123ab", BigDecimal.TEN, BigDecimal.ONE, "buy", "1234", "td123",  BigDecimal.TEN);
+		TradeHistory tradeHistory1 = new TradeHistory("123ab", BigDecimal.TEN, BigDecimal.ONE, "buy", "1234", "td123",  BigDecimal.TEN,LocalDate.now());
 		assertEquals(tradeHistory.hashCode(), tradeHistory1.hashCode());
 	}
 	

@@ -2,6 +2,7 @@ package com.fidelity.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class TradeHistory {
 	private String instrumentId;
@@ -11,23 +12,26 @@ public class TradeHistory {
 	private String clientId;
 	private String tradeId;
 	private BigDecimal cashValue ;
+	private LocalDate tradeTimestamp;
 	
-	
-	
+	public TradeHistory() {
+		
+	}
 	public TradeHistory(String instrumentId, BigDecimal quantity, BigDecimal executionPrice, String direction,
-			String clientId, String tradeId, BigDecimal cashValue) {
+			String clientId, String tradeId, BigDecimal cashValue, LocalDate tradeHistory) {
+		
 		if(instrumentId == null || clientId == null || tradeId == null || instrumentId.isEmpty() || clientId.isEmpty() || tradeId.isEmpty())
 			throw new IllegalArgumentException("instument id,client id , trade id cannot be null or empty");
-		setInstrumentId(instrumentId);
-		setQuantity(quantity);
-		setExecutionPrice(executionPrice);
-		setDirection(direction);
-		setClientId(clientId);
-		setTradeId(tradeId);
-		setCashValue(cashValue);
+		
+		this.instrumentId = instrumentId;
+		this.quantity = quantity;
+		this.executionPrice = executionPrice;
+		this.direction = direction;
+		this.clientId = clientId;
+		this.tradeId = tradeId;
+		this.cashValue = cashValue;
+		this.tradeTimestamp = tradeHistory;
 	}
-	
-	
 	public String getInstrumentId() {
 		return instrumentId;
 	}
@@ -55,15 +59,17 @@ public class TradeHistory {
 		this.direction = direction;
 	}
 	public String getClientId() {
-		
 		return clientId;
 	}
 	public void setClientId(String clientId) {
+		
 		if(clientId == null)
 			throw new IllegalArgumentException("client id cannot be null");
 		this.clientId = clientId;
 	}
 	public String getTradeId() {
+		if(tradeId == null)
+			throw new IllegalArgumentException("trade id cannot be null");
 		return tradeId;
 	}
 	public void setTradeId(String tradeId) {
@@ -77,18 +83,16 @@ public class TradeHistory {
 	public void setCashValue(BigDecimal cashValue) {
 		this.cashValue = cashValue;
 	}
+	public LocalDate getTradeHistory() {
+		return tradeTimestamp;
+	}
+	public void setTradeHistory(LocalDate tradeHistory) {
+		this.tradeTimestamp = tradeHistory;
+	}
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cashValue == null) ? 0 : cashValue.hashCode());
-		result = prime * result + ((clientId == null) ? 0 : clientId.hashCode());
-		result = prime * result + ((direction == null) ? 0 : direction.hashCode());
-		result = prime * result + ((executionPrice == null) ? 0 : executionPrice.hashCode());
-		result = prime * result + ((instrumentId == null) ? 0 : instrumentId.hashCode());
-		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
-		result = prime * result + ((tradeId == null) ? 0 : tradeId.hashCode());
-		return result;
+		return Objects.hash(cashValue, clientId, direction, executionPrice, instrumentId, quantity, tradeTimestamp,
+				tradeId);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -99,51 +103,17 @@ public class TradeHistory {
 		if (getClass() != obj.getClass())
 			return false;
 		TradeHistory other = (TradeHistory) obj;
-		if (cashValue == null) {
-			if (other.cashValue != null)
-				return false;
-		} else if (!cashValue.equals(other.cashValue))
-			return false;
-		if (clientId == null) {
-			if (other.clientId != null)
-				return false;
-		} else if (!clientId.equals(other.clientId))
-			return false;
-		if (direction == null) {
-			if (other.direction != null)
-				return false;
-		} else if (!direction.equals(other.direction))
-			return false;
-		if (executionPrice == null) {
-			if (other.executionPrice != null)
-				return false;
-		} else if (!executionPrice.equals(other.executionPrice))
-			return false;
-		if (instrumentId == null) {
-			if (other.instrumentId != null)
-				return false;
-		} else if (!instrumentId.equals(other.instrumentId))
-			return false;
-		if (quantity == null) {
-			if (other.quantity != null)
-				return false;
-		} else if (!quantity.equals(other.quantity))
-			return false;
-		if (tradeId == null) {
-			if (other.tradeId != null)
-				return false;
-		} else if (!tradeId.equals(other.tradeId))
-			return false;
-		return true;
+		return Objects.equals(cashValue, other.cashValue) && Objects.equals(clientId, other.clientId)
+				&& Objects.equals(direction, other.direction) && Objects.equals(executionPrice, other.executionPrice)
+				&& Objects.equals(instrumentId, other.instrumentId) && Objects.equals(quantity, other.quantity)
+				&& Objects.equals(tradeTimestamp, other.tradeTimestamp) && Objects.equals(tradeId, other.tradeId);
 	}
 	@Override
 	public String toString() {
 		return "TradeHistory [instrumentId=" + instrumentId + ", quantity=" + quantity + ", executionPrice="
 				+ executionPrice + ", direction=" + direction + ", clientId=" + clientId + ", tradeId=" + tradeId
-				+ ", cashValue=" + cashValue + "]";
+				+ ", cashValue=" + cashValue + ", tradeHistory=" + tradeTimestamp + "]";
 	}
 	
 	
-	
-
 }
